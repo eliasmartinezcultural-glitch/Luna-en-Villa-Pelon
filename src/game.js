@@ -135,8 +135,9 @@ export class Game{
   const q=QUESTS[this.state.quest.id];if(!q)return;
   this.state.quest.state="COMPLETED";this.state.money+=q.reward.money;
   if(!this.state.memories.includes(q.reward.memory))this.state.memories.push(q.reward.memory);
-  this.ui.toast("Misión completada. El mundo guarda esta experiencia.");this.updateQuestUI();this.save();
+  this.ui.toast("Misión completada. El mundo guarda esta experiencia.");
   if(this.state.quest.id==="intro")this.state.quest={id:"river",state:"AVAILABLE",step:0};
+  this.updateQuestUI();this.save();
  }
  updateQuestUI(){
   const q=this.state.quest,data=QUESTS[q.id];if(!data){this.ui.quest("Exploración libre","Seguí recorriendo Villa Pelón");return}
